@@ -5,6 +5,8 @@ from .managers import UserManager
 
 
 class User(AbstractBaseUser):
+    """Represents a user."""
+
     email = models.EmailField(verbose_name="email address",
                               unique=True)
 

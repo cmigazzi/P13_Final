@@ -3,9 +3,10 @@ from django.contrib.auth.models import BaseUserManager
 
 
 class UserManager(BaseUserManager):
+    """Manager of User model."""
 
     def create_user(self, email, password=None):
-
+        """Create a new user."""
         if not email:
             raise ValueError
 
