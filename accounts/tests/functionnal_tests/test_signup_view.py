@@ -2,9 +2,9 @@ import pytest
 
 from django.views import View
 from django.urls import reverse
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
 
+from accounts.forms import UserCreationForm
 from accounts.views import Signup
 
 
@@ -33,3 +33,8 @@ class TestSignupView:
     def test_form_in_context(self, client):
         response = client.get(reverse("signup"))
         assert response.context["form"] == UserCreationForm
+
+    # def test_form_submission(self, client):
+    #     data = {"email": "test@django.com",
+    #             "user_type": ""}
+    #     response = client.psot(reverse("signup"), context)

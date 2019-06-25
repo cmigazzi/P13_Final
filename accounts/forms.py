@@ -2,13 +2,15 @@ from django import forms
 
 from accounts.models import User
 
-
-USER_TYPES_CHOICES = [("is_teacher", "Un professeur"),
-                      ("is_school", "Une école")]
+SCHOOL = "SCHOOL"
+TEACHER = "TEACHER"
+USER_TYPES_CHOICES = [(TEACHER, "Un professeur"),
+                      (SCHOOL, "Une école")]
 
 
 class UserCreationForm(forms.ModelForm):
     """Represents the form for user creation."""
+
     user_type = forms.ChoiceField(widget=forms.Select,
                                   choices=USER_TYPES_CHOICES)
     password1 = forms.CharField(label="Mot de passe",
@@ -18,6 +20,7 @@ class UserCreationForm(forms.ModelForm):
 
     class Meta:
         """Link to model."""
+
         model = User
         fields = ('email',)
 
@@ -34,6 +37,10 @@ class UserCreationForm(forms.ModelForm):
         """Save the new user in database."""
         user = super().save(commit=False)
         user.set_password(self.cleaned_data.get("password1"))
+        if self.cleaned_data.get("user_type") == TEACHER:
+            user.is_teacher = True
+        if self.cleaned_data.get("user_type") == SCHOOL:
+            user.is_school = True
         if commit:
             user.save()
         return user

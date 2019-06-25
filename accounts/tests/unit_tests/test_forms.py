@@ -2,13 +2,14 @@ import pytest
 
 from django import forms
 from django.contrib.auth import get_user_model
-from accounts.forms import UserCreationForm, USER_TYPES_CHOICES
+from accounts.forms import (UserCreationForm, USER_TYPES_CHOICES,
+                            TEACHER, SCHOOL)
 
 form = UserCreationForm
 User = get_user_model()
 
 data_test = {"email": "test@django.com",
-             "user_type": "is_teacher",
+             "user_type": TEACHER,
              "password1": "azertyui",
              "password2": "azertyui"}
 
@@ -21,8 +22,8 @@ class TestUserTypeField:
     field = form.declared_fields["user_type"]
 
     def test_user_types_choices(self):
-        assert USER_TYPES_CHOICES == [("is_teacher", "Un professeur"),
-                                      ("is_school", "Une école")]
+        assert USER_TYPES_CHOICES == [("TEACHER", "Un professeur"),
+                                      ("SCHOOL", "Une école")]
 
     def test_user_type_field(self):
         fields = form.declared_fields
@@ -77,9 +78,29 @@ class TestCleanPasswords:
 
 
 @pytest.mark.django_db
-def test_save_method():
-    test_form = form(data=data_test)
-    test_form.is_valid()
-    test_form.save()
-    user = User.objects.get(email="test@django.com")
-    assert user.check_password("azertyui")
+class TestSaveMethod:
+
+    def test_save_password(self):
+        test_form = form(data=data_test)
+        test_form.is_valid()
+        test_form.save()
+        user = User.objects.get(email="test@django.com")
+        assert user.check_password("azertyui")
+
+    def test_save_user_is_teacher(self):
+        test_form = form(data=data_test)
+        test_form.is_valid()
+        test_form.save()
+        user = User.objects.get(email="test@django.com")
+        assert user.is_teacher is True
+        assert user.is_school is False
+
+    def test_user_is_school(self):
+        data = dict(data_test)
+        data["user_type"] = SCHOOL
+        test_form = form(data=data)
+        test_form.is_valid()
+        test_form.save()
+        user = User.objects.get(email="test@django.com")
+        assert user.is_school is True
+        assert user.is_teacher is False
