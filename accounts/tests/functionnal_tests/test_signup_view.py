@@ -34,7 +34,28 @@ class TestSignupView:
         response = client.get(reverse("signup"))
         assert response.context["form"] == UserCreationForm
 
-    # def test_form_submission(self, client):
-    #     data = {"email": "test@django.com",
-    #             "user_type": ""}
-    #     response = client.psot(reverse("signup"), context)
+    def test_form_submission(self, client):
+        data = {"email": "test@django.com",
+                "user_type": "TEACHER",
+                "password1": "azertyui",
+                "password2": "azertyui"}
+        client.post(reverse("signup"), data)
+        assert User.objects.get(email=data["email"])
+
+    def test_invalid_passwords(self, client):
+        data = {"email": "test@django.com",
+                "user_type": "TEACHER",
+                "password1": "azertyui",
+                "password2": "azerttyy"}
+        response = client.post(reverse("signup"), data)
+        form = response.context["form"]
+        assert form.errors["password2"]
+
+    def test_invalid_email(self, client):
+        data = {"email": "test@django",
+                "user_type": "TEACHER",
+                "password1": "azertyui",
+                "password2": "azerttyui"}
+        response = client.post(reverse("signup"), data)
+        form = response.context["form"]
+        assert form.errors["email"]

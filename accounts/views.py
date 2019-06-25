@@ -17,7 +17,11 @@ class Signup(View):
         """Manage POST methof."""
         form = self.form_class(request.POST)
         if form.is_valid():
+            form.save()
             return HttpResponse("Go to home")
+        else:
+            context = {"form": form}
+            return render(request, self.template_name, context)
 
     def get(self, request):
         """Manage GET method."""
