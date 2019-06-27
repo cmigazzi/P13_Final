@@ -1,0 +1,15 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+  <h1>Mes paramètres</h1>
+  <div>
+    {% if user.is_teacher %}
+      <div>Prénom: {{ user.first_name }}</div>
+      <div>Nom: {{user.last_name }}</div>
+    {% elif user.is_school %}
+      <div>Nom de l'établissement: {{ user.school_name }}</div>
+    {% endif %}
+    <div>Adresse: {{ user.address }}</div>
+    <div>Téléphone: {{ user.phone }}</div>
+  </div>
+{% endblock %}

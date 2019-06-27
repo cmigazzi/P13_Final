@@ -5,7 +5,8 @@ from django.contrib.auth.models import BaseUserManager
 class UserManager(BaseUserManager):
     """Manager of User model."""
 
-    def create_user(self, email, password=None):
+    def create_user(self, email, password=None,
+                    is_teacher=False, is_school=False):
         """Create a new user."""
         if not email:
             raise ValueError
@@ -13,6 +14,11 @@ class UserManager(BaseUserManager):
         user = self.model(
             email=self.normalize_email(email)
             )
+        if is_teacher is True:
+            user.is_teacher = True
+        if is_school is True:
+            user.is_school = True
+
         user.set_password(password)
         user.save(using=self._db)
 

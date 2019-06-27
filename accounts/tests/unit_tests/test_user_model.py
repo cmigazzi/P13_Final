@@ -19,6 +19,10 @@ def test_username():
 
 def test_user_attributes():
     assert hasattr(User, "email")
+    assert hasattr(User, "school_name")
+    assert hasattr(User, "first_name")
+    assert hasattr(User, "last_name")
+
     assert hasattr(User, "is_active")
     assert hasattr(User, "is_admin")
     assert hasattr(User, "is_teacher")
@@ -27,6 +31,7 @@ def test_user_attributes():
     assert hasattr(User, "has_perm")
     assert hasattr(User, "has_module_perms")
     assert hasattr(User, "is_staff")
+    assert hasattr(User, "phone")
 
 
 def test_user_creation(django_user_model):

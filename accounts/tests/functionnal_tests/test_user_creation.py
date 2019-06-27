@@ -31,6 +31,20 @@ class TestUserCreation:
         user = User.objects.create_user(email=email, password=None)
         assert user.has_usable_password() is False
 
+    def test_create_user_teacher(self):
+        email, password = "test@django.fr", "abcdefg"
+        user = User.objects.create_user(email=email,
+                                        password=password,
+                                        is_teacher=True)
+        assert user.is_teacher is True
+
+    def test_create_user_school(self):
+        email, password = "test@django.fr", "abcdefg"
+        user = User.objects.create_user(email=email,
+                                        password=password,
+                                        is_school=True)
+        assert user.is_school is True
+
 
 @pytest.mark.django_db
 class TestSuperUserCreation:

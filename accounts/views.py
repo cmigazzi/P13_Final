@@ -3,6 +3,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import View
+from django.contrib.auth.decorators import login_required
 
 from accounts.forms import UserCreationForm
 
@@ -14,7 +15,7 @@ class Signup(View):
     template_name = "accounts/signup.html"
 
     def post(self, request, *args, **kwargs):
-        """Manage POST methof."""
+        """Manage POST method."""
         form = self.form_class(request.POST)
         if form.is_valid():
             form.save()
@@ -27,3 +28,9 @@ class Signup(View):
         """Manage GET method."""
         context = {"form": self.form_class}
         return render(request, self.template_name, context)
+
+
+@login_required()
+def user_settings(request):
+    """Return view for user settings."""
+    return render(request, "accounts/settings.html")
