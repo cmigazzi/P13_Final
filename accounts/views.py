@@ -1,8 +1,9 @@
 """Contains all views for accounts app."""
 
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.views import View
+from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 
 from accounts.forms import UserCreationForm
@@ -19,7 +20,11 @@ class Signup(View):
         form = self.form_class(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponse("Go to home")
+            email = form.cleaned_data.get("email")
+            password = form.cleaned_data.get("password1")
+            user = authenticate(email=email, password=password)
+            login(request, user)
+            return redirect(reverse("home"))
         else:
             context = {"form": form}
             return render(request, self.template_name, context)
