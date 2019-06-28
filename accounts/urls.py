@@ -1,6 +1,4 @@
-"""Manage routing urls for accounts application."""
-
-from django.urls import path
+from django.urls import path, reverse_lazy
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
 
@@ -17,5 +15,12 @@ urlpatterns = [
          name="user_settings"),
     path("change_settings/",
          login_required(views.ChangeUserSettings.as_view()),
-         name="change_settings")
+         name="change_settings"),
+    path("change_password/",
+         login_required(
+            auth_views.PasswordChangeView.as_view(
+                template_name="accounts/change-password.html",
+                success_url=reverse_lazy("user_settings")
+               )),
+         name="change_password")
 ]

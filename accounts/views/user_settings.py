@@ -12,6 +12,7 @@ def user_settings(request):
 
 class ChangeUserSettings(View):
     """Manage view for change_settings url."""
+
     address_form_class = AddressForm
     settings_form_class = SettingsForm
     template_name = "accounts/change-settings.html"
@@ -36,5 +37,6 @@ class ChangeUserSettings(View):
     def get(self, request):
         """Handle GET method and return forms."""
         context = {"address_form": self.address_form_class,
-                   "settings_form": self.settings_form_class}
+                   "settings_form": self.settings_form_class,
+                   "school_exclude_fields": ["First name", "Last name"]}
         return render(request, self.template_name, context)

@@ -77,6 +77,11 @@ class TestChangeSettingsView:
         assert response.context["address_form"] == AddressForm
         assert response.context["settings_form"] == SettingsForm
 
+    def test_school_exclude_fields_in_context(self, client, user_test):
+        response = client.get(self.url)
+        assert response.context["school_exclude_fields"] == ["First name",
+                                                             "Last name"]
+
     def test_post_method(self, client, user_test):
         assert hasattr(ChangeUserSettings, "post")
 
@@ -101,7 +106,9 @@ class TestChangeSettingsView:
     def test_teacher_form_rendering(self, client, user_teacher_login):
         response = client.get(self.url)
         assert "First name" in response.content.decode("utf-8")
+        assert "School name" not in response.content.decode("utf-8")
 
     def test_school_form_rendering(self, client, user_school_login):
         response = client.get(self.url)
         assert "School name" in response.content.decode("utf-8")
+        assert "First name" not in response.content.decode("utf-8")

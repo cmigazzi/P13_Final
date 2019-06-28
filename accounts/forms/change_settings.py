@@ -8,6 +8,7 @@ User = get_user_model()
 
 class SettingsForm(forms.ModelForm):
     """Represents form for user settings."""
+
     first_name = forms.CharField(required=False)
     last_name = forms.CharField(required=False)
     school_name = forms.CharField(required=False)
@@ -15,6 +16,7 @@ class SettingsForm(forms.ModelForm):
 
     class Meta:
         """Meta data."""
+
         model = User
         fields = ("email", "first_name", "last_name", "school_name",
                   "phone")
@@ -22,7 +24,9 @@ class SettingsForm(forms.ModelForm):
 
 class AddressForm(forms.ModelForm):
     """Represents form for user address."""
+
     class Meta:
         """Meta data."""
+
         model = Address
         exclude = ("user",)
