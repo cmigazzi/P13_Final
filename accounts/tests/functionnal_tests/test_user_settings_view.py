@@ -20,17 +20,17 @@ class TestUserSettingsView:
         response = client.get(self.url)
         assert response.status_code == 302
 
-    def test_templates_with_teacher_user(self, client, user_teacher):
+    def test_templates_with_teacher_user(self, client, user_teacher_login):
         response = client.get(self.url)
         assert "Prénom: Jean" in response.content.decode("utf-8")
 
-    def test_templates_with_school_user(self, client, user_school):
+    def test_templates_with_school_user(self, client, user_school_login):
         response = client.get(self.url)
         assert ("Nom de l'établissement: "
                 "Conservatoire de Limonest") in response.content.decode(
                                                                     "utf-8")
 
-    def test_templates_with_address(self, client, user_teacher):
+    def test_templates_with_address(self, client, user_teacher_login):
         response = client.get(self.url)
         assert ("50 rue de Genève, "
                 "La diamanterie, 01630 Sergy, "

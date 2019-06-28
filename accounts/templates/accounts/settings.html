@@ -12,4 +12,7 @@
     <div>Adresse: {{ user.address }}</div>
     <div>Téléphone: {{ user.phone }}</div>
   </div>
+  <div>
+    <a href="{% url 'change_settings' %}">Modifier mes paramètres</a>
+  </div>
 {% endblock %}

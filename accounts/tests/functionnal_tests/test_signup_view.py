@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.contrib.auth import get_user_model
 
 from accounts.forms import UserCreationForm
-from accounts.views import Signup
+from accounts.views import SignupView
 
 
 User = get_user_model()
@@ -21,13 +21,13 @@ class TestSignupView:
                  "password2": "azertyui"}
 
     def test_class_is_view(self):
-        assert issubclass(Signup, View)
+        assert issubclass(SignupView, View)
 
     def test_attributes(self):
-        assert hasattr(Signup, "form_class")
-        assert hasattr(Signup, "template_name")
-        assert hasattr(Signup, "get")
-        assert hasattr(Signup, "post")
+        assert hasattr(SignupView, "form_class")
+        assert hasattr(SignupView, "template_name")
+        assert hasattr(SignupView, "get")
+        assert hasattr(SignupView, "post")
 
     def test_get_method(self, client):
         response = client.get(self.url)

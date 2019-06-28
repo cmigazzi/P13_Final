@@ -1,0 +1,30 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+<h1>Modifier les paramètres</h1>
+<form action="{% url 'change_settings' %]" method="POST">
+  {% csrf_token %}
+  {% for field in settings_form %}
+    {% if field.label == 'first_name' or field.label == 'last_name' %}
+      {% if user.is_teacher %}
+      <div>
+        {{ field.label }}
+        {{ field }}
+      </div>
+      {% endif %}
+    {% elif field.label == 'school_name' and user.is_school %}
+    <div>
+      {{ field.label}}
+      {{ field }}
+    </div>
+    {% else %}
+    <div>
+      {{ field.label}}
+      {{ field }}
+    </div>
+    {% endif %}
+  {% endfor %}
+  {{ address_form }}
+  <input type="submit" value="Modifier">
+</form>
+{% endblock %}

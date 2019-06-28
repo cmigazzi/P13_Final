@@ -4,12 +4,11 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
 from django.contrib.auth import login, authenticate
-from django.contrib.auth.decorators import login_required
 
 from accounts.forms import UserCreationForm
 
 
-class Signup(View):
+class SignupView(View):
     """Render signup view and call validation form."""
 
     form_class = UserCreationForm
@@ -33,9 +32,3 @@ class Signup(View):
         """Manage GET method."""
         context = {"form": self.form_class}
         return render(request, self.template_name, context)
-
-
-@login_required()
-def user_settings(request):
-    """Return view for user settings."""
-    return render(request, "accounts/settings.html")

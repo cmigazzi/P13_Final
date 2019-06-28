@@ -20,7 +20,7 @@ def user_address():
 
 
 @pytest.fixture()
-def user_teacher(client, django_user_model, user_address):
+def user_teacher(django_user_model, user_address):
     login_data = {"email": "teacher@django.com",
                   "password": "azertyui",
                   "is_teacher": True}
@@ -31,16 +31,29 @@ def user_teacher(client, django_user_model, user_address):
     user.phone = "0450421852"
     user.save()
     Address.objects.create(user=user, **user_address)
-    client.login(**login_data)
+    return user
 
 
 @pytest.fixture()
-def user_school(client, django_user_model):
-    login_data = {"email": "teacher@django.com",
+def user_teacher_login(client, user_teacher):
+    client.login(email=user_teacher.email, password="azertyui")
+    return user_teacher
+
+
+@pytest.fixture()
+def user_school(client, django_user_model, user_address):
+    login_data = {"email": "school@django.com",
                   "password": "azertyui",
                   "is_school": True}
     user = django_user_model.objects.create_user(**login_data)
     user.school_name = "Conservatoire de Limonest"
     user.phone = "0450421852"
     user.save()
-    client.login(**login_data)
+    Address.objects.create(user=user, **user_address)
+    return user
+
+
+@pytest.fixture()
+def user_school_login(client, user_school):
+    client.login(email=user_school.email, password="azertyui")
+    return user_school
