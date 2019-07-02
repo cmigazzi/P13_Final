@@ -22,5 +22,8 @@ urlpatterns = [
                 template_name="accounts/change-password.html",
                 success_url=reverse_lazy("user_settings")
                )),
-         name="change_password")
+         name="change_password"),
+    path("activate/<str:uid>/<str:token>",
+         views.activate,
+         name="activate_account")
 ]

@@ -6,7 +6,9 @@ from accounts.models import Address
 @pytest.fixture()
 def user_test(client, django_user_model):
     login_data = {"email": "test@django.com", "password": "azertyui"}
-    django_user_model.objects.create_user(**login_data)
+    user = django_user_model.objects.create_user(**login_data)
+    user.is_active = True
+    user.save()
     client.login(**login_data)
 
 
@@ -29,6 +31,7 @@ def user_teacher(django_user_model, user_address):
     user.first_name = "Jean"
     user.last_name = "Coltrain"
     user.phone = "0450421852"
+    user.is_active = True
     user.save()
     Address.objects.create(user=user, **user_address)
     return user
@@ -48,6 +51,7 @@ def user_school(client, django_user_model, user_address):
     user = django_user_model.objects.create_user(**login_data)
     user.school_name = "Conservatoire de Limonest"
     user.phone = "0450421852"
+    user.is_active = True
     user.save()
     Address.objects.create(user=user, **user_address)
     return user

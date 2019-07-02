@@ -1,0 +1,12 @@
+{% extends "home/base.html" %}
+
+{% block content %}
+{% if is_valid_data == True %}
+  <h1>C'est tout bon</h1>
+  <p>Votre compte est à présent actif !</p>
+  <a href="{% url 'dashboard' %}">Entrer dans Melomnia</a>
+{% else %}
+  <h1>Oups...</h1>
+  <p>Le lien n'est malheuresement plus fonctionnel et votre compte n'a pas été activé</p>
+{% endif %}
+{% endblock %}

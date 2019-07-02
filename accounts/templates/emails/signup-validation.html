@@ -1,0 +1,4 @@
+{% autoescape off %}
+<p>Voici le lien pour activer votre compte:</p>
+<p>https://{{ domain }}{% url 'activate_account' uid=uid token=token %}</p>
+{% endautoescape %}

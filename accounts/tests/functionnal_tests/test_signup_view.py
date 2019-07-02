@@ -58,10 +58,35 @@ class TestSignupView:
         form = response.context["form"]
         assert form.errors["email"]
 
-    def test_redirection_after_signup(self, client):
+    def test_url_after_valid_signup(self, client):
         response = client.post(self.url, self.form_data)
-        assert response.status_code == 302
+        templates = [t.name for t in response.templates]
+        assert "accounts/signup-email.html" in templates
 
-    def test_redirection_authenticate(self, client):
-        response = client.post(self.url, self.form_data, follow=True)
-        assert response.resolver_match.url_name == "dashboard"
+    def test_email_sending(self, client, mailoutbox):
+        client.post(self.url, self.form_data)
+        assert len(mailoutbox) == 1
+
+    def test_email_content(self, client, mailoutbox):
+        client.post(self.url, self.form_data)
+        mail = mailoutbox[0]
+        assert mail.subject == "Melomnia: Confirmation de l'inscription"
+        assert mail.from_email == "no-reply@melomnia.fr"
+        assert list(mail.to) == [self.form_data["email"]]
+        assert "Voici le lien" in mail.body
+
+    def test_token_is_in_email(self, client):
+        response = client.post(self.url, self.form_data)
+        assert response.context["token"]
+
+    def test_uid_is_in_context(self, client):
+        response = client.post(self.url, self.form_data)
+        assert response.context["uid"]
+
+    def test_validation_link(self, client, mailoutbox):
+        response = client.post(self.url, self.form_data)
+        link = (f"https://{response.context['domain']}/"
+                "accounts/activate/"
+                f"{response.context['uid']}/{response.context['token']}")
+        mail = mailoutbox[0]
+        assert link in mail.body

@@ -16,7 +16,7 @@ class User(AbstractBaseUser):
     phone = models.CharField(max_length=10, null=True)
 
     is_admin = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=False)
     is_teacher = models.BooleanField(default=False)
     is_school = models.BooleanField(default=False)
 
