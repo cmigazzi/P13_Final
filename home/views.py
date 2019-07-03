@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.contrib.auth.forms import AuthenticationForm
+
+from accounts.forms import LoginForm
 
 
 def index(request):
@@ -8,5 +9,5 @@ def index(request):
     if request.user.is_authenticated:
         return redirect(reverse("dashboard"))
 
-    context = {"form": AuthenticationForm}
+    context = {"form": LoginForm}
     return render(request, "home/index.html", context)

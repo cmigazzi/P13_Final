@@ -1,8 +1,20 @@
 {% extends 'home/base.html' %}
 
 {% block content %}
-  <div>
-    <a href="{% url 'signup' %}">Créer un compte</a>
+  <div class="container">
+      {% include 'accounts/login-form.html' %}
+      <div class="row">
+        <div class="divider col s4 offset-s4"></div>
+      </div>
+      <div class="row">
+        <p class="col s10 offset-s1 m8 offset-m2 l4 offset-l4 center-align">Vous n'avez pas encore de compte ?</p>
+      </div>
+      <div class="row">
+        <div class="container col s12 m6 offset-m3 l4 offset-l4">
+          <div class="row">
+              <a class="waves-effect waves-light btn deep-purple darken-4 col s10 offset-s1 m8 offset-m2" href="{% url 'signup' %}">Créer un compte</a>
+          </div>
+        </div>
+      </div>
   </div>
-  {% include 'accounts/login-form.html' %}
 {% endblock %}

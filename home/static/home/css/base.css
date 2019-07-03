@@ -1,0 +1,13 @@
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+
+/* forms focus color */
+.input-field input[type=text]:focus + label {
+    color: #311b92 !important;
+}
+
+.input-field input[type=text]:focus, .input-field input[type=password]:focus {
+    box-shadow: 0 1px 0 0 #311b92 !important;
+}
