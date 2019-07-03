@@ -1,7 +1,12 @@
 {% extends 'home/base.html' %}
 
+{% block header %}
+  {% include 'dashboard/header.html' %}
+{% endblock %}
+
 {% block content %}
-  <h1>Tableau de bord</h1>
+<div class="container">
+    <h1>Tableau de bord</h1>
   <p>en cours de dévelopemment</p>
-  <a href="{% url 'user_settings' %}">Paramètre du compte</a>
+</div>
 {% endblock %}

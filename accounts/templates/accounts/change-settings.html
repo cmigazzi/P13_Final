@@ -1,23 +1,39 @@
-{% extends 'home/base.html' %}
+{% extends 'dashboard/dashboard.html' %}
 
 {% block content %}
-<h1>Modifier les paramètres</h1>
-<form action="{% url 'change_settings' %]" method="POST">
-  {% csrf_token %}
-  {% for field in settings_form %}
-    {% if user.is_teacher and field.label != 'School name'  %}
-      <div>
-        {{ field.label }}
-        {{ field }}
-      </div>
-    {% elif user.is_school and field.label not in school_exclude_fields  %}
-      <div>
-        {{ field.label}}
-        {{ field }}
-      </div>
-    {% endif %}
-  {% endfor %}
-  {{ address_form }}
-  <input type="submit" value="Modifier">
-</form>
+<div class="container">
+  <div class="row">
+    <h4 class="center-align">Modifier mes informations personnelles</h4>
+  </div>
+  <div class="row col s4 offset-s4">
+    <div class="divider"></div>
+  </div>
+</div>
+<div class="row"></div>
+<div class="container">
+  <form action="{% url 'change_settings' %]" method="POST">
+    {% csrf_token %}
+    {% for field in settings_form %}
+      {% if user.is_teacher and field.label != 'School name'  %}
+        <div class="input-field col s12">
+          {{ field.label_tag }}
+          {{ field }}
+        </div>
+      {% elif user.is_school and field.label not in school_exclude_fields  %}
+        <div class="input-field col s12">
+          {{ field.label_tag }}
+          {{ field }}
+        </div>
+      {% endif %}
+    {% endfor %}
+    {% for field in address_form %}
+    <div class="input-field col s12">
+      {{ field.label_tag }}
+      {{ field }}
+    </div>
+    {% endfor %}
+    <button class="waves-effect waves-light btn deep-purple darken-4 col m4 offset-m4 s8 offset-s2" type="submit">Valider les modifications</button>
+    <a class="waves-effect waves-light btn amber darken-1 col m3 s6" href="{% url 'user_settings' %}">Annuler</a>
+  </form>
+</div>
 {% endblock %}

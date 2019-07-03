@@ -1,0 +1,10 @@
+{% load static %}
+<nav>
+  <div class="nav-wrapper deep-purple darken-4">
+    <a href="{% url 'dashboard' %}" class="brand-logo"><img src="{% static 'home/img/logo-light.png' %}" alt="melomnia"></a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><a href="{% url 'user_settings' %}"><i class="material-icons left">settings</i>Paramètres</a>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -2,13 +2,18 @@ body {
     font-family: 'Raleway', sans-serif;
 }
 
+/* Navbar  */
+nav .brand-logo {
+    margin-left: 1rem;
+}
 
-/* forms focus color */
+
+/* Forms colors */
 .input-field input[type=text]:focus + label {
     color: #311b92 !important;
 }
 
-.input-field input[type=text]:focus, .input-field input[type=password]:focus {
+.input-field input[type=text]:focus, .input-field input[type=email]:focus, .input-field input[type=password]:focus {
     box-shadow: 0 1px 0 0 #311b92 !important;
 }
 

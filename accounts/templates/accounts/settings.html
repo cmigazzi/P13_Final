@@ -1,19 +1,32 @@
-{% extends 'home/base.html' %}
+{% extends 'dashboard/dashboard.html' %}
 
 {% block content %}
-  <h1>Mes paramètres</h1>
-  <div>
-    {% if user.is_teacher %}
-      <div>Prénom: {{ user.first_name }}</div>
-      <div>Nom: {{user.last_name }}</div>
-    {% elif user.is_school %}
-      <div>Nom de l'établissement: {{ user.school_name }}</div>
-    {% endif %}
-    <div>Adresse: {{ user.address }}</div>
-    <div>Téléphone: {{ user.phone }}</div>
+<div class="container">
+  <div class="row">
+    <h4 class="center-align">Mes informations personnelles</h4>
   </div>
-  <div>
-    <a href="{% url 'change_settings' %}">Modifier mes paramètres</a>
-    <a href="{% url 'change_password' %}">Modifier mon mot de passe</a>
+  <div class="row col s4 offset-s4">
+    <div class="divider"></div>
   </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="container col s-6 offset-s3">
+      {% if user.is_teacher %}
+        <p>Prénom: {{ user.first_name }}</p>
+        <p>Nom: {{user.last_name }}</p>
+      {% elif user.is_school %}
+        <p>Nom de l'établissement: {{ user.school_name }}</p>
+      {% endif %}
+      <p>Adresse: {{ user.address }}</p>
+      <p>Téléphone: {{ user.phone }}</p>
+    </div>
+  </div>
+  <div class="row">
+    <a class="waves-effect waves-light btn deep-purple darken-4 col s4 offset-s4" href="{% url 'change_settings' %}">Modifier mes informations</a>
+  </div>
+  <div class="row">
+    <a class="waves-effect waves-light btn deep-purple darken-4 col s4 offset-s4" href="{% url 'change_password' %}">Modifier mon mot de passe</a>
+  </div>
+</div>
 {% endblock %}
