@@ -30,10 +30,16 @@ class TestUserTypeField:
         assert isinstance(fields["user_type"], forms.ChoiceField)
 
     def test_user_type_widget(self):
-        assert isinstance(self.field.widget, forms.Select)
+        assert isinstance(self.field.widget, forms.RadioSelect)
 
     def test_user_type_choices(self):
         assert self.field.choices == USER_TYPES_CHOICES
+
+    def test_user_type_attrs(self):
+        assert self.field.widget.attrs["class"] == "with-gap"
+
+    def test_user_type_label(self):
+        assert self.field.label == "Vous êtes"
 
 
 class TestPasswordsField:

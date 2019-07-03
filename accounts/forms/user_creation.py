@@ -11,8 +11,10 @@ USER_TYPES_CHOICES = [(TEACHER, "Un professeur"),
 class UserCreationForm(forms.ModelForm):
     """Represents the form for user creation."""
 
-    user_type = forms.ChoiceField(widget=forms.Select,
-                                  choices=USER_TYPES_CHOICES)
+    user_type = forms.ChoiceField(widget=forms.RadioSelect(
+                                        attrs={"class": "with-gap"}),
+                                  choices=USER_TYPES_CHOICES,
+                                  label="Vous êtes")
     password1 = forms.CharField(label="Mot de passe",
                                 widget=forms.PasswordInput)
     password2 = forms.CharField(label="Confirmation du mot de passe",

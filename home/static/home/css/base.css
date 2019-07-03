@@ -11,3 +11,15 @@ body {
 .input-field input[type=text]:focus, .input-field input[type=password]:focus {
     box-shadow: 0 1px 0 0 #311b92 !important;
 }
+
+[type="radio"].with-gap:checked + span::after {
+    background-color: #311b92 !important;
+}
+
+[type="radio"].with-gap:checked + span::before, [type="radio"].with-gap:checked + span::after {
+    border-color: #311b92 !important;
+}
+
+.radio-label {
+    color: black !important;
+}

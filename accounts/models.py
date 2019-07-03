@@ -8,7 +8,7 @@ from .managers import UserManager
 class User(AbstractBaseUser):
     """Represents a user."""
 
-    email = models.EmailField(verbose_name="email address",
+    email = models.EmailField(verbose_name="Adresse email",
                               unique=True)
     school_name = models.CharField(max_length=255, null=True)
     first_name = models.CharField(max_length=255, null=True)
