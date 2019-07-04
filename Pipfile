@@ -8,11 +8,13 @@ pytest-django = "*"
 pydocstyle = "*"
 flake8 = "*"
 pytest-cov = "*"
+fabric2 = "*"
 
 [packages]
 django = "*"
 dj-database-url = "*"
 psycopg2 = "*"
+psycopg2-binary = "*"
 
 [requires]
 python_version = "3.7"
