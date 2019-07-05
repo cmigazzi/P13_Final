@@ -6,7 +6,7 @@ python:
 branches:
   only:
     - /^release-.*$/
-    -/^fix-.*$/
+    - /^fix-.*$/
 
 install:
   - 'pip install pipenv'
