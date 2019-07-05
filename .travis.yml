@@ -1,0 +1,22 @@
+dist: xenial
+language: python
+python:
+  - '3.7'
+
+branches:
+  only:
+    - /^release-.*$/
+    -/^fix-.*$/
+
+install:
+  - 'pip install pipenv'
+  - 'pipenv install --dev'
+
+env:
+  - DJANGO_SETTINGS_MODULE="pur_beurre.settings"
+
+services:
+  - postgresql
+
+script:
+- 'pytest'
