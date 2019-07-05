@@ -1,3 +1,3 @@
 from . import *
 
-STATIC_ROOT = '/home/melomnia/staticfiles/'
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
