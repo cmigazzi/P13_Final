@@ -68,3 +68,10 @@ class TestSuperUserCreation:
                                       password=password)
         superuser = User.objects.get(email=email)
         assert superuser.is_admin is True
+
+    def test_superuser_is_active(self):
+        email, password = "admin@django.com", "poiuytyr"
+        User.objects.create_superuser(email=email,
+                                      password=password)
+        superuser = User.objects.get(email=email)
+        assert superuser.is_active is True
