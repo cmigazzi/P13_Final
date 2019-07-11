@@ -1,1 +1,1 @@
-[{"model": "profiles.school", "pk": 1, "fields": {"user": 1, "school_type": "Conservatoire"}}, {"model": "profiles.school", "pk": 2, "fields": {"user": 2, "school_type": "Conservatoire"}}, {"model": "profiles.school", "pk": 3, "fields": {"user": 3, "school_type": "Association"}}]
+[{"model": "profiles.school", "pk": 1, "fields": {"user": 1, "school_type": "Association"}}, {"model": "profiles.school", "pk": 2, "fields": {"user": 2, "school_type": "Conservatoire"}}, {"model": "profiles.school", "pk": 3, "fields": {"user": 3, "school_type": "Ecole de musique"}}]
