@@ -29,8 +29,7 @@ class Command(BaseCommand):
                    "deserunt mollit anim id est laborum."),
 
         for school in schools:
-            number = [i for i in range(1, 4)]
-            for n in range(1, random.choice(number)):
+            for i in range(1, random.randrange(3, 7)):
                 job_offer = JobOffer(
                     school=school,
                     position=random.choice(POSITIONS),
@@ -41,7 +40,8 @@ class Command(BaseCommand):
                     limit_date=random.choice(LIMIT_DATES)
                                      )
                 job_offer.save()
-            call_command("dumpdata",
-                         "jobs.JobOffer",
-                         indent=2,
-                         output="jobs/fixtures/jobs.json")
+
+        call_command("dumpdata",
+                     "jobs.JobOffer",
+                     indent=2,
+                     output="jobs/fixtures/jobs.json")
