@@ -1,5 +1,5 @@
 {% extends "dashboard/dashboard.html" %}
-
+{% load hours_filter %}
 {% block content %}
 <div class="container">
   <div class="row">
@@ -14,12 +14,14 @@
   <table>
     <thead>
       <th class="center-align">Poste</th>
+      <th class="center-align">Nombre d'heures</th>
       <th class="center-align">Ecole</th>
     </thead>
     <tbody>
       {% for job in jobs %}
       <tr>
         <td class="center-align">{{ job.position }}</td>
+        <td class="center-align">{{ job.half_hour_count|hours }}</td>
         <td class="center-align">{{ job.school }}</td>
       </tr>
       {% endfor %}
