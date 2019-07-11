@@ -3,7 +3,7 @@
   "model": "accounts.user",
   "pk": 1,
   "fields": {
-    "password": "pbkdf2_sha256$150000$lMX8VfwKKNhN$ddLHuPEVDhFRfdbYrYd73/gL1PYeSJLZSWy87428hlg=",
+    "password": "pbkdf2_sha256$150000$ATts1OrfOyhr$+chB0gTbGNTGw6Eqm5ezs0vcWW3MyhCisc+9sTnf0Jk=",
     "last_login": null,
     "email": "direction@conservatoire.com",
     "is_admin": false,
@@ -16,7 +16,7 @@
   "model": "accounts.user",
   "pk": 2,
   "fields": {
-    "password": "pbkdf2_sha256$150000$rd6HpCUYMaWX$A/JYFGMvMJy6hTDkSiwJmliobiFpPnur7lRRdxMStgc=",
+    "password": "pbkdf2_sha256$150000$q4mBYfcr8Xxu$fVeZ9CSH5/fIoqzjDohOUK7cAwBNeoBSsi9PvFn8WjM=",
     "last_login": null,
     "email": "direction@ecoledemusique.com",
     "is_admin": false,
@@ -29,7 +29,7 @@
   "model": "accounts.user",
   "pk": 3,
   "fields": {
-    "password": "pbkdf2_sha256$150000$DqIUTRIg1cTa$5yPwF4lrsNM8eH2jYtznp0pF0F86gkrTy5/gZEDr1hc=",
+    "password": "pbkdf2_sha256$150000$bd3CUqTAsf7H$TT/HJsSEV6+VIYfIulBPWjIOtuP8WoIEKUz2pky/tBs=",
     "last_login": null,
     "email": "direction@cnsmpd.com",
     "is_admin": false,
@@ -42,7 +42,7 @@
   "model": "accounts.user",
   "pk": 4,
   "fields": {
-    "password": "pbkdf2_sha256$150000$OdIk0WkP0BCu$EHYMYCzH94EAPfC8+pgz+GpQTbzW+iCIJZ+yYpiuDVA=",
+    "password": "pbkdf2_sha256$150000$WzkWoxuH0i9T$glbREp9jezpIrlbtGcfDpSEwOnyd6BJf2GfULm3UlOQ=",
     "last_login": null,
     "email": "jeanmi@melomelo.com",
     "is_admin": false,
@@ -55,7 +55,7 @@
   "model": "accounts.user",
   "pk": 5,
   "fields": {
-    "password": "pbkdf2_sha256$150000$qOACVpHmInb0$7/dhAES7ZOI17VBVbwV2ToXMvccHIrGcxgqC8MJzEFA=",
+    "password": "pbkdf2_sha256$150000$qCC59Avu2Voi$dbwD3y8ed0JpvVgvaf7Pg4bm5BWVQcyEf95fD9EaTjI=",
     "last_login": null,
     "email": "francine@melomelo.com",
     "is_admin": false,
@@ -68,7 +68,7 @@
   "model": "accounts.user",
   "pk": 6,
   "fields": {
-    "password": "pbkdf2_sha256$150000$X3thVJEKH6Ry$4E1VupZIv02RKjeiEJrn784U3nsS1E/LU4Af924t23s=",
+    "password": "pbkdf2_sha256$150000$5wwgspsZH0km$WVcN9u+mjnzc+4nwra6r6SglIshw5no+L5FGRiXmzTQ=",
     "last_login": null,
     "email": "gege@melomelo.com",
     "is_admin": false,
@@ -81,7 +81,7 @@
   "model": "accounts.user",
   "pk": 7,
   "fields": {
-    "password": "pbkdf2_sha256$150000$c4FkruVzWusE$VTMVJ0lCDvlbJiECcvW1FuEbgrI6TrRQN33iSVVb5Ec=",
+    "password": "pbkdf2_sha256$150000$8OisynfK4K6K$XbVqrypfIs5oRjTAl+3zBKfrRGiDWo0NnsGRl2wJeok=",
     "last_login": null,
     "email": "jeannot@melomelo.com",
     "is_admin": false,
@@ -94,7 +94,7 @@
   "model": "accounts.user",
   "pk": 8,
   "fields": {
-    "password": "pbkdf2_sha256$150000$bQrBWHKTWvO0$Hue0FdfQcgxKUM2Q8nhWt+LT6iiWDcFXRUh3WmveljQ=",
+    "password": "pbkdf2_sha256$150000$pyty1hmsLVWO$p8lE3JrDTqOvbL3zOkYUJKbZyHjdN564E2cLRFqwfWM=",
     "last_login": null,
     "email": "admin@admin.com",
     "is_admin": true,

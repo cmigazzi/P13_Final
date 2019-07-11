@@ -4,9 +4,9 @@
   "pk": 1,
   "fields": {
     "user": 1,
-    "phone": null,
-    "name": null,
-    "school_type": "Ecole de musique"
+    "phone": "0154879653",
+    "name": "Ecole de musique VDI",
+    "school_type": "Association"
   }
 },
 {
@@ -14,9 +14,9 @@
   "pk": 2,
   "fields": {
     "user": 2,
-    "phone": null,
-    "name": null,
-    "school_type": "Ecole de musique"
+    "phone": "0653265987",
+    "name": "Ecole de musique VDI",
+    "school_type": "Association"
   }
 },
 {
@@ -24,8 +24,8 @@
   "pk": 3,
   "fields": {
     "user": 3,
-    "phone": null,
-    "name": null,
+    "phone": "0653265987",
+    "name": "Conservatoire Grenoble",
     "school_type": "Ecole de musique"
   }
 }
