@@ -14,17 +14,10 @@
   <form action="{% url 'change_settings' %]" method="POST">
     {% csrf_token %}
     {% for field in settings_form %}
-      {% if user.is_teacher and field.label != 'School name'  %}
         <div class="input-field col s12">
           {{ field.label_tag }}
           {{ field }}
         </div>
-      {% elif user.is_school and field.label not in school_exclude_fields  %}
-        <div class="input-field col s12">
-          {{ field.label_tag }}
-          {{ field }}
-        </div>
-      {% endif %}
     {% endfor %}
     {% for field in address_form %}
     <div class="input-field col s12">
@@ -33,7 +26,7 @@
     </div>
     {% endfor %}
     <button class="waves-effect waves-light btn deep-purple darken-4 col m4 offset-m4 s8 offset-s2" type="submit">Valider les modifications</button>
-    <a class="waves-effect waves-light btn amber darken-1 col m3 s6" href="{% url 'user_settings' %}">Annuler</a>
+    <a class="waves-effect waves-light btn amber darken-1 col m3 s6" href="{% url 'profile_settings' %}">Annuler</a>
   </form>
 </div>
 {% endblock %}

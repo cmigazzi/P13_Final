@@ -6,14 +6,11 @@ import pytest
 from django.db import models
 
 from jobs.models import JobOffer
-from profiles.models import School
 
 
 @pytest.fixture
 def job_offer(user_school):
-    school = School(user=user_school)
-    school.save()
-    offer = {"school": school,
+    offer = {"school": user_school.school,
              "position": "Professeur de trompette",
              "half_hour_count": 10,
              "contract_type": "CDI",
@@ -50,5 +47,5 @@ class TestJobOffer:
 
     def test_string_representation(self, job_offer):
         offer = JobOffer(**job_offer)
-        assert offer.__str__() == ("Conservatoire de Limonest: "
+        assert offer.__str__() == ("Ecole VDI: "
                                    "Professeur de trompette")

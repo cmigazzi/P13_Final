@@ -18,4 +18,4 @@ class JobOffer(models.Model):
 
     def __str__(self):
         """Return string representation."""
-        return f"{self.school.user.school_name}: {self.position}"
+        return f"{self.school.name}: {self.position}"

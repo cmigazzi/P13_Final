@@ -43,4 +43,5 @@ class Command(BaseCommand):
                 job_offer.save()
             call_command("dumpdata",
                          "jobs.JobOffer",
+                         indent=2,
                          output="jobs/fixtures/jobs.json")

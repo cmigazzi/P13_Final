@@ -2,7 +2,8 @@ import pytest
 
 from django.core.management import call_command
 
-from accounts.models import Address
+from address.models import Address
+from profiles.models import Teacher, School
 
 
 # Database populating
@@ -31,17 +32,30 @@ def user_address():
 
 
 @pytest.fixture()
-def user_teacher(django_user_model, user_address):
+def teacher_profile():
+    return {"first_name": "Jean",
+            "last_name": "Coltrain",
+            "phone": "0450421852",
+            }
+
+
+@pytest.fixture()
+def school_profile():
+    return {"name": "Ecole VDI",
+            "phone": "0450421852",
+            "school_type": "Ecole"
+            }
+
+
+@pytest.fixture()
+def user_teacher(django_user_model, user_address, teacher_profile):
     login_data = {"email": "teacher@django.com",
                   "password": "azertyui",
                   "is_teacher": True}
-
     user = django_user_model.objects.create_user(**login_data)
-    user.first_name = "Jean"
-    user.last_name = "Coltrain"
-    user.phone = "0450421852"
     user.is_active = True
     user.save()
+    Teacher.objects.create(user=user, **teacher_profile)
     Address.objects.create(user=user, **user_address)
     return user
 
@@ -53,15 +67,14 @@ def user_teacher_login(client, user_teacher):
 
 
 @pytest.fixture()
-def user_school(client, django_user_model, user_address):
+def user_school(client, django_user_model, user_address, school_profile):
     login_data = {"email": "school@django.com",
                   "password": "azertyui",
                   "is_school": True}
     user = django_user_model.objects.create_user(**login_data)
-    user.school_name = "Conservatoire de Limonest"
-    user.phone = "0450421852"
     user.is_active = True
     user.save()
+    School.objects.create(user=user, **school_profile)
     Address.objects.create(user=user, **user_address)
     return user
 

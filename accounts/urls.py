@@ -12,17 +12,11 @@ urlpatterns = [
          auth_views.LoginView.as_view(template_name="accounts/login.html",
                                       authentication_form=LoginForm),
          name="login"),
-    path("settings/",
-         login_required(views.user_settings),
-         name="user_settings"),
-    path("change_settings/",
-         login_required(views.ChangeUserSettings.as_view()),
-         name="change_settings"),
     path("change_password/",
          login_required(
             auth_views.PasswordChangeView.as_view(
                 template_name="accounts/change-password.html",
-                success_url=reverse_lazy("user_settings")
+                success_url=reverse_lazy("profile_settings")
                )),
          name="change_password"),
     path("activate/<str:uid>/<str:token>",

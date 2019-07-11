@@ -24,4 +24,5 @@ class Command(BaseCommand):
             profile.save()
         call_command("dumpdata",
                      "profiles.School",
+                     indent=2,
                      output="profiles/fixtures/profiles.json")

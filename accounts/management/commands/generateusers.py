@@ -36,4 +36,5 @@ class Command(BaseCommand):
 
         call_command("dumpdata",
                      "accounts.User",
+                     indent=2,
                      output="accounts/fixtures/users.json")

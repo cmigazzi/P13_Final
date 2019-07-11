@@ -1,1 +1,106 @@
-[{"model": "accounts.user", "pk": 1, "fields": {"password": "pbkdf2_sha256$150000$9o3m1NvSuP7M$rzZneaVLDQ+F6fd4BjvBv6Q8EAXW/Y2jO3QnmkO+Dts=", "last_login": null, "email": "direction@conservatoire.com", "school_name": null, "first_name": null, "last_name": null, "phone": null, "is_admin": false, "is_active": true, "is_teacher": false, "is_school": true}}, {"model": "accounts.user", "pk": 2, "fields": {"password": "pbkdf2_sha256$150000$kqfjDd7EerdJ$iwi0N+G1juCcQAUZy3GUxjlQFVzKc2YHjE4B0UZoC60=", "last_login": null, "email": "direction@ecoledemusique.com", "school_name": null, "first_name": null, "last_name": null, "phone": null, "is_admin": false, "is_active": true, "is_teacher": false, "is_school": true}}, {"model": "accounts.user", "pk": 3, "fields": {"password": "pbkdf2_sha256$150000$84rP8uW2izzi$wsvIAL9jUJTita1NuWVh1Q1ReNbAc3i0LgV7m5Ti79A=", "last_login": null, "email": "direction@cnsmpd.com", "school_name": null, "first_name": null, "last_name": null, "phone": null, "is_admin": false, "is_active": true, "is_teacher": false, "is_school": true}}, {"model": "accounts.user", "pk": 4, "fields": {"password": "pbkdf2_sha256$150000$CViHYvBVyclp$PpQdvUXDA7FNhyAnKYS6nGt+CLPd3TkXduUbeLSSIkU=", "last_login": null, "email": "jeanmi@melomelo.com", "school_name": null, "first_name": null, "last_name": null, "phone": null, "is_admin": false, "is_active": true, "is_teacher": true, "is_school": false}}, {"model": "accounts.user", "pk": 5, "fields": {"password": "pbkdf2_sha256$150000$vRnQWZQnQ7nv$FsSeOlCSbko5/K/ecE1zVXRyLsGHBYPDjDGGTWQHtlA=", "last_login": null, "email": "francine@melomelo.com", "school_name": null, "first_name": null, "last_name": null, "phone": null, "is_admin": false, "is_active": true, "is_teacher": true, "is_school": false}}, {"model": "accounts.user", "pk": 6, "fields": {"password": "pbkdf2_sha256$150000$yP3PnASsY7dz$43rXy1oFWVhNWM5jye9oI+NWYEhHHZ0tsCaeqfHuBJo=", "last_login": null, "email": "gege@melomelo.com", "school_name": null, "first_name": null, "last_name": null, "phone": null, "is_admin": false, "is_active": true, "is_teacher": true, "is_school": false}}, {"model": "accounts.user", "pk": 7, "fields": {"password": "pbkdf2_sha256$150000$47U9v36W0c6S$kR6OfkzbMvb8sSz46Wh4kFT5vQS4ikuxTHxFnkuCxP4=", "last_login": null, "email": "jeannot@melomelo.com", "school_name": null, "first_name": null, "last_name": null, "phone": null, "is_admin": false, "is_active": true, "is_teacher": true, "is_school": false}}, {"model": "accounts.user", "pk": 8, "fields": {"password": "pbkdf2_sha256$150000$aJUdi3vl8wah$CwSqT3uCVJJ3rL0WvswWX7y5VSSbMD6CvOpG5rBPMM4=", "last_login": null, "email": "admin@admin.com", "school_name": null, "first_name": null, "last_name": null, "phone": null, "is_admin": true, "is_active": true, "is_teacher": false, "is_school": false}}]
+[
+{
+  "model": "accounts.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$lMX8VfwKKNhN$ddLHuPEVDhFRfdbYrYd73/gL1PYeSJLZSWy87428hlg=",
+    "last_login": null,
+    "email": "direction@conservatoire.com",
+    "is_admin": false,
+    "is_active": true,
+    "is_teacher": false,
+    "is_school": true
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$rd6HpCUYMaWX$A/JYFGMvMJy6hTDkSiwJmliobiFpPnur7lRRdxMStgc=",
+    "last_login": null,
+    "email": "direction@ecoledemusique.com",
+    "is_admin": false,
+    "is_active": true,
+    "is_teacher": false,
+    "is_school": true
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$DqIUTRIg1cTa$5yPwF4lrsNM8eH2jYtznp0pF0F86gkrTy5/gZEDr1hc=",
+    "last_login": null,
+    "email": "direction@cnsmpd.com",
+    "is_admin": false,
+    "is_active": true,
+    "is_teacher": false,
+    "is_school": true
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$OdIk0WkP0BCu$EHYMYCzH94EAPfC8+pgz+GpQTbzW+iCIJZ+yYpiuDVA=",
+    "last_login": null,
+    "email": "jeanmi@melomelo.com",
+    "is_admin": false,
+    "is_active": true,
+    "is_teacher": true,
+    "is_school": false
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$qOACVpHmInb0$7/dhAES7ZOI17VBVbwV2ToXMvccHIrGcxgqC8MJzEFA=",
+    "last_login": null,
+    "email": "francine@melomelo.com",
+    "is_admin": false,
+    "is_active": true,
+    "is_teacher": true,
+    "is_school": false
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$X3thVJEKH6Ry$4E1VupZIv02RKjeiEJrn784U3nsS1E/LU4Af924t23s=",
+    "last_login": null,
+    "email": "gege@melomelo.com",
+    "is_admin": false,
+    "is_active": true,
+    "is_teacher": true,
+    "is_school": false
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$c4FkruVzWusE$VTMVJ0lCDvlbJiECcvW1FuEbgrI6TrRQN33iSVVb5Ec=",
+    "last_login": null,
+    "email": "jeannot@melomelo.com",
+    "is_admin": false,
+    "is_active": true,
+    "is_teacher": true,
+    "is_school": false
+  }
+},
+{
+  "model": "accounts.user",
+  "pk": 8,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$bQrBWHKTWvO0$Hue0FdfQcgxKUM2Q8nhWt+LT6iiWDcFXRUh3WmveljQ=",
+    "last_login": null,
+    "email": "admin@admin.com",
+    "is_admin": true,
+    "is_active": true,
+    "is_teacher": false,
+    "is_school": false
+  }
+}
+]

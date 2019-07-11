@@ -13,13 +13,13 @@
   <div class="row">
     <div class="container col s-6 offset-s3">
       {% if user.is_teacher %}
-        <p>Prénom: {{ user.first_name }}</p>
-        <p>Nom: {{user.last_name }}</p>
+        <p>Prénom: {{ profile.first_name }}</p>
+        <p>Nom: {{profile.last_name }}</p>
       {% elif user.is_school %}
-        <p>Nom de l'établissement: {{ user.school_name }}</p>
+        <p>Nom de l'établissement: {{ profile.name }}</p>
       {% endif %}
       <p>Adresse: {{ user.address }}</p>
-      <p>Téléphone: {{ user.phone }}</p>
+      <p>Téléphone: {{ profile.phone }}</p>
     </div>
   </div>
   <div class="row">
