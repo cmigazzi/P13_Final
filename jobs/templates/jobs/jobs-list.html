@@ -1,0 +1,9 @@
+{% extends "dashboard/dashboard.html" %}
+
+{% block content %}
+<p>Les offres d'emplois</p>
+{% for job in jobs %}
+    {{ job.position }}
+    {{ job.school }}
+{% endfor %}
+{% endblock %}

@@ -23,5 +23,6 @@ urlpatterns = [
     path('adminia/', admin.site.urls),
     path('', include('home.urls')),
     path('accounts/', include('accounts.urls')),
-    path('dashboard/', include('dashboard.urls'))
+    path('dashboard/', include('dashboard.urls')),
+    path('jobs/', include('jobs.urls'))
 ]

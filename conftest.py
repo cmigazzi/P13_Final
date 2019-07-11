@@ -1,6 +1,15 @@
 import pytest
 
+from django.core.management import call_command
+
 from accounts.models import Address
+
+
+# Database populating
+@pytest.fixture(scope="session")
+def db_populated(django_db_setup, django_db_blocker):
+    with django_db_blocker.unblock():
+        call_command("loadfixtures")
 
 
 @pytest.fixture()
@@ -61,3 +70,9 @@ def user_school(client, django_user_model, user_address):
 def user_school_login(client, user_school):
     client.login(email=user_school.email, password="azertyui")
     return user_school
+
+
+@pytest.fixture()
+def teacher_login(client):
+    teacher = client.login(email="jeanmi@melomelo.com", password="azertyui")
+    return teacher

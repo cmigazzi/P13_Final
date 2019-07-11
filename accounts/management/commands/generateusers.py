@@ -13,25 +13,26 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         """Handle command."""
         for school in SCHOOLS:
-            school["is_school"] = True
-            school["is_active"] = True
-
-            user = User(**school)
-            user.save()
+            school_user = User.objects.create_user(
+                        school["email"],
+                        school["password"],
+                        is_school=True)
+            school_user.is_active = True
+            school_user.save()
 
         for teacher in TEACHERS:
-            teacher["is_teacher"] = True
-            teacher["is_active"] = True
-
-            user = User(**teacher)
-            user.save()
+            teacher_user = User.objects.create_user(
+                        teacher["email"],
+                        teacher["password"],
+                        is_teacher=True)
+            teacher_user.is_active = True
+            teacher_user.save()
 
         for superuser in SUPERUSER:
-            superuser["is_admin"] = True
-            superuser["is_active"] = True
-
-            user = User(**superuser)
-            user.save()
+            super_user = User.objects.create_superuser(
+                            superuser["email"],
+                            superuser["password"])
+            super_user.save()
 
         call_command("dumpdata",
                      "accounts.User",

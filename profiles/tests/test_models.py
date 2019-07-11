@@ -33,3 +33,8 @@ class TestSchoolModel:
         school.save()
 
         assert School.objects.get(user=user_school) == school
+
+    def test_string_representation(self, user_school):
+        school = School(user=user_school)
+
+        assert school.__str__() == "Conservatoire de Limonest"

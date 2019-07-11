@@ -19,3 +19,7 @@ class School(Profile):
     """Represents an school profile."""
 
     school_type = models.CharField(max_length=255)
+
+    def __str__(self):
+        """Return string representation."""
+        return f"{self.user.school_name}"
