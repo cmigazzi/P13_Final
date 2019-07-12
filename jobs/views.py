@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import Http404
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.contrib.auth.decorators import login_required
 
 from .models import JobOffer
@@ -23,3 +23,9 @@ def job_detail(request, job_id):
         raise Http404("L'annonce n'existe pas.")
     context = {"job_offer": job_offer}
     return render(request, "jobs/job-detail.html", context)
+
+
+class JobDetail(DetailView):
+    """Return view for one job offer detail."""
+
+    model = JobOffer
