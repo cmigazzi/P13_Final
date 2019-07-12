@@ -28,3 +28,12 @@ nav .brand-logo {
 .radio-label {
     color: black !important;
 }
+
+/* Clickable row */
+.clickable-row {
+    cursor: pointer;
+}
+
+.clickable-row:hover {
+    background-color: #fff8e1;
+}

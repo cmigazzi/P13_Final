@@ -1,5 +1,5 @@
 """Contains tests for hours filters."""
-from jobs.filters import hours
+from jobs.templatetags.hours_filter import hours
 
 
 def test_hours():
