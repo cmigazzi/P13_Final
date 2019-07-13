@@ -1,0 +1,40 @@
+{% extends 'dashboard/dashboard.html' %}
+{% load hours_filter %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col s2 center-align">
+      <a href="{% url 'jobs' %}"><i class="material-icons medium amber-text text-darken-1">arrow_back</i></a> 
+    </div>
+    <h4 class="center-align col s8">{{ joboffer.position }}</h4>
+    <p class="center-align col s12">{{ joboffer.school}}</p>
+  </div>
+  <div class="row">
+    <div class="divider col s4 offset-s4"></div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="container col s8 offset-s2">
+      <div class="row">
+          <ul>
+            <li>Nombre d'heures: {{ joboffer.half_hour_count|hours }}</li>
+            <li>Type de contrat: {{ joboffer.contract_type }}</li>
+            <li>Département: 01 Ain</li>
+            <li>Date limite d'envoi des candidatures: {{ joboffer.limit_date|date:"j/m/Y" }}</li>
+          </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="container col s8 offset-s2">
+      <div class="row">
+        <p>Descrptif du poste:</p>
+        <p>{{ joboffer.details }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

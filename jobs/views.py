@@ -1,8 +1,6 @@
-from django.shortcuts import render
-from django.http import Http404
-from django.views.generic import ListView, DetailView
-from django.contrib.auth.decorators import login_required
-
+from django.views.generic import ListView, DetailView, CreateView
+from django.urls import reverse
+from django.shortcuts import redirect
 from .models import JobOffer
 
 
@@ -14,18 +12,22 @@ class JobList(ListView):
     queryset = JobOffer.objects.order_by("-creation_date")
 
 
-@login_required()
-def job_detail(request, job_id):
-    """Return view for one jo offer."""
-    try:
-        job_offer = JobOffer.objects.get(id=job_id)
-    except JobOffer.DoesNotExist:
-        raise Http404("L'annonce n'existe pas.")
-    context = {"job_offer": job_offer}
-    return render(request, "jobs/job-detail.html", context)
-
-
 class JobDetail(DetailView):
     """Return view for one job offer detail."""
 
     model = JobOffer
+
+
+class JobOfferCreate(CreateView):
+    """Return view with form to create a job offer."""
+
+    model = JobOffer
+    fields = ["position", "half_hour_count", "contract_type", "details",
+              "apply_email", "limit_date"]
+
+    def get(self, request, *args, **kwargs):
+        """Handle GET method and redirect if user is teacher."""
+        self.object = None
+        if request.user.is_school:
+            return super().render_to_response(super().get_context_data())
+        return redirect(reverse("dashboard"))
