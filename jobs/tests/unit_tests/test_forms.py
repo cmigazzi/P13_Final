@@ -1,40 +1,32 @@
-"""Contains tests for JobOfferCreateView."""
+"""Contains tests for JobOffer form."""
 from datetime import date
 
-from django.views.generic import CreateView
-from django.urls import reverse
+from django import forms
 
-from jobs.views import JobOfferCreate
-from jobs.models import JobOffer
 from jobs.forms import JobOfferForm
-
-url = reverse("joboffer_create")
-
-
-def test_is_create_view():
-    assert issubclass(JobOfferCreate, CreateView)
+from jobs.models import JobOffer
 
 
-def test_form_class():
-    assert JobOfferCreate.form_class == JobOfferForm
+def test_form_is_model_form():
+    assert issubclass(JobOfferForm, forms.ModelForm)
 
 
-def test_unathenticated_user(client):
-    response = client.get(url)
-    assert response.status_code == 302
+def test_meta_model_is_joboffer():
+    assert JobOfferForm.Meta.model == JobOffer
 
 
-def test_school_user(client, user_school_login):
-    response = client.get(url)
-    assert response.status_code == 200
+def test_form_fields():
+    assert JobOfferForm.Meta.fields == ("position", "half_hour_count",
+                                        "contract_type", "details",
+                                        "apply_email", "limit_date")
 
 
-def test_teacher_user(client, user_teacher_login):
-    response = client.get(url)
-    assert response.status_code == 302
+def test_half_hour_count_widget():
+    assert isinstance(JobOfferForm.declared_fields["half_hour_count"],
+                      forms.CharField)
 
 
-def test_post_method_valid(client, user_school_login):
+def test_cleaned_half_hour_count():
     data = {"position": "Professeur de trompette",
             "half_hour_count": "6h30",
             "contract_type": "CDI",
@@ -50,6 +42,6 @@ def test_post_method_valid(client, user_school_login):
                         "deserunt mollit anim id est laborum."),
             "apply_email": "emploi@conservatoire.fr",
             "limit_date": date(2019, 11, 2).strftime("%d/%m/%Y")}
-    client.post(url, data=data)
-    assert JobOffer.objects.get(school=user_school_login.school,
-                                position="Professeur de trompette")
+    form = JobOfferForm(data=data)
+    form.is_valid()
+    assert form.cleaned_data["half_hour_count"] == 13

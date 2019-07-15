@@ -102,10 +102,8 @@ class TestChangeSettingsView:
 
     def test_teacher_form_rendering(self, client, user_teacher_login):
         response = client.get(self.url)
-        assert "First name" in response.content.decode("utf-8")
-        assert "School name" not in response.content.decode("utf-8")
+        assert "Prénom" in response.content.decode("utf-8")
 
     def test_school_form_rendering(self, client, user_school_login):
         response = client.get(self.url)
-        assert "Name" in response.content.decode("utf-8")
-        assert "First name" not in response.content.decode("utf-8")
+        assert "Nom de l&#39;établissement" in response.content.decode("utf-8")
