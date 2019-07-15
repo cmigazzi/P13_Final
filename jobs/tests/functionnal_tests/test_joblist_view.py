@@ -26,3 +26,7 @@ class TestJobListView:
         expected = JobOffer.objects.order_by("-creation_date")
         response = client.get(self.url)
         assert list(response.context["jobs"]) == list(expected)
+
+    def test_school_publish_link(self, client, user_school_login):
+        response = client.get(self.url)
+        assert "Publier une offre" in response.content.decode("utf-8")
