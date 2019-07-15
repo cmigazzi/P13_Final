@@ -76,8 +76,9 @@ class TestChangeSettingsView:
 
     def test_teacher_forms_in_context(self, client, user_teacher_login):
         response = client.get(self.url)
-        assert response.context["address_form"] == AddressForm
-        assert response.context["settings_form"] == TeacherSettingsForm
+        assert isinstance(response.context["address_form"], AddressForm)
+        assert isinstance(response.context["settings_form"],
+                          TeacherSettingsForm)
 
     def test_post_method(self, client, user_test):
         assert hasattr(ChangeUserSettings, "post")
