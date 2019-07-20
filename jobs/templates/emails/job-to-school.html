@@ -1,0 +1,13 @@
+{% autoescape off %}
+<h1>{{ teacher }} a envoyé sa candidature !</h1>
+
+<h3>Ses motivations:</h3>
+{{ motivations }}
+
+<h3>Pour consulter son CV:</h3>
+https://www.melomnia.fr{{ cv_url }}
+
+<h3>Pour le contacter:</h3>
+email: {{ teacher.user.email }}
+téléphone: {{ teacher.phone }}
+{% endautoescape %}

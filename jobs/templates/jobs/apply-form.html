@@ -1,0 +1,78 @@
+{% extends 'dashboard/dashboard.html' %}
+{% load hours_filter %}
+
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <h4 class="center-align">Envoyer sa candidature</h4>
+  </div>
+  <div class="row">
+    <div class="divider col s4 offset-s4"></div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row col s8 offset-s2">
+    <div class="container">
+      <div class="row">
+        <h5 class="center-align">Postuler en ligne, comment ça marche ?</h5>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <ol class="col s6 offset-s3">
+          <li>Décrivez vos motivations</li>
+          <li>Joignez votre CV au format pdf (max 5Mo)</li>
+          <li>Cliquez sur "Postuler"</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <p class="col s8 offset-s2">Votre candidature est envoyée directement à la personne en charge du recrutement et vous recevez un email de confirmation d'envoi de candidature.</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <!-- Modal Trigger -->
+        <a class="col s6 offset-s3 center-align waves-effect waves-light deep-purple darken-4 btn modal-trigger" href="#modal1">Relire l'offre</a>
+
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+          <div class="modal-content">
+            <h4>{{ job_offer.position }}</h4>
+            <h5>{{ job_offer.school }}</h5>
+            <p>{{ job_offer.half_hour_count|hours }}</p>
+            <p>{{ job_offer.details }}</p>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Fermer</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="container">
+  <form enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="input-field col s12">
+          {{ field.label_tag }}
+          {{ field }}
+        </div>
+    {% endfor %}
+    <button class="waves-effect waves-light btn deep-purple darken-4 col m4 offset-m4 s8 offset-s2" type="submit">Postuler</button>
+    <a class="waves-effect waves-light btn amber darken-1 col m3 s6" href="{% url 'jobs' %}">Annuler</a>
+  </form>
+</div>
+{% endblock %}
+
