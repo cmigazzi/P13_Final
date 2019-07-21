@@ -21,6 +21,11 @@ def test_form_fields():
                                         "apply_email", "limit_date")
 
 
+def test_details_field_class():
+    details_field = JobOfferForm().fields["details"]
+    assert details_field.widget.attrs["class"] == "materialize-textarea"
+
+
 def test_half_hour_count_widget():
     assert isinstance(JobOfferForm.declared_fields["half_hour_count"],
                       forms.CharField)

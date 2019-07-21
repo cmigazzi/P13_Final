@@ -8,7 +8,8 @@ class JobApplyForm(forms.Form):
     """Define Form for job offer applying."""
 
     motivation = forms.CharField(label="Vos motivations",
-                                 widget=forms.Textarea)
-    curriculum = forms.FileField(label="Envoyer votre CV",
+                                 widget=forms.Textarea(
+                                     attrs={"class": "materialize-textarea"}))
+    curriculum = forms.FileField(label="Joignez votre CV",
                                  validators=[FileExtensionValidator(["pdf"]),
                                              size_validator])

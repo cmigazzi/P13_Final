@@ -18,4 +18,9 @@ def test_motivation_field():
 def test_curriculum_field():
     field = JobApplyForm.base_fields["curriculum"]
     assert isinstance(field, forms.FileField)
-    assert field.label == "Envoyer votre CV"
+    assert field.label == "Joignez votre CV"
+
+
+def test_motivation_field_class():
+    motivation_field = JobApplyForm().fields["motivation"]
+    assert motivation_field.widget.attrs["class"] == "materialize-textarea"

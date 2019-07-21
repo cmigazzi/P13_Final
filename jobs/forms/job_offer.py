@@ -6,6 +6,12 @@ from jobs.models import JobOffer
 class JobOfferForm(forms.ModelForm):
     """Define form for job offer publishing."""
 
+    def __init__(self, *args, **kwargs):
+        """Extends details field widget."""
+        super().__init__(*args, **kwargs)
+        self.fields["details"].widget.attrs.update(
+                                {"class": "materialize-textarea"})
+
     half_hour_count = forms.CharField(max_length=5)
 
     class Meta:
