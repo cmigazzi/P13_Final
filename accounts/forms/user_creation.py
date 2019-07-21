@@ -31,7 +31,7 @@ class UserCreationForm(forms.ModelForm):
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
         if password1 and password2 and password1 != password2:
-            raise forms.ValidationError("Les mots de passe ne sont"
+            raise forms.ValidationError("Les mots de passe ne sont "
                                         "pas identiques")
         return password2
 

@@ -1,0 +1,44 @@
+{% for error in form.non_field_errors %}
+<div class="card-panel red lighten-4">  
+    <span>{{ error }}</span>
+</div>
+{% endfor %}
+
+{% for field in form %}
+<div class="input-field col s12">
+
+  {% if field.field.widget.input_type == "radio" %}
+    <p>{{ field.label }} :</p>
+    {% for radio in field %}
+    <p>
+      <label for="{{ radio.id_for_label }}">
+        {{ radio.tag }}
+        <span class="radio-label">{{ radio.choice_label }}</span>
+      </label>
+    </p>
+		{% endfor %}
+	
+	{% elif field.field.widget.input_type == "file" %}
+	<div class="file-field input-field col s12">
+		<div class="btn deep-purple darken-4">
+			<span>Parcourir</span>
+			{{ field }}
+		</div>
+		<div class="file-path-wrapper">
+			<input class="file-path validate" type="text" placeholder="{{ field.label }}">
+		</div>
+	</div>
+	{% else %}
+		{{ field.label_tag }}
+		{{ field }}
+
+{% endif %}
+
+{% for error in field.errors %}
+  <div class="card-panel red lighten-4">  
+    <span>{{ error }}</span>
+  </div>
+{% endfor %}
+
+</div>
+{% endfor %}

@@ -7,7 +7,7 @@ class JobOfferForm(forms.ModelForm):
     """Define form for job offer publishing."""
 
     def __init__(self, *args, **kwargs):
-        """Extends details field widget."""
+        """Extend details field widget."""
         super().__init__(*args, **kwargs)
         self.fields["details"].widget.attrs.update(
                                 {"class": "materialize-textarea"})
