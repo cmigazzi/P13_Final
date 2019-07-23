@@ -1,4 +1,17 @@
 {% autoescape off %}
-<p>Voici le lien pour activer votre compte:</p>
-<p>https://{{ domain }}{% url 'activate_account' uid=uid token=token %}</p>
+<header>
+    <h4>Bonjour,</h4>
+</header>
+
+<body>
+    <p>Vous venez de vous inscrire sur www.melomnia.fr et nous vous en remercions !</p>
+    <p>Voici le lien pour activer votre compte:</p>
+    <p>https://{{ domain }}{% url 'activate_account' uid=uid token=token %}</p>            
+</body>
+
+<footer>
+    <p>Vous ne pouvez pas répondre à ce mail pour nous contacter.
+       Veuillez utiliser le formulaire de contact.
+    </p> 
+</footer>
 {% endautoescape %}
