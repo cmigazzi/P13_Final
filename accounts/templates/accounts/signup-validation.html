@@ -1,12 +1,18 @@
-{% extends "home/base.html" %}
+{% extends "home/index.html" %}
 
 {% block content %}
-{% if is_valid_data == True %}
-  <h1>C'est tout bon</h1>
-  <p>Votre compte est à présent actif !</p>
-  <a href="{% url 'dashboard' %}">Entrer dans Melomnia</a>
-{% else %}
-  <h1>Oups...</h1>
-  <p>Le lien n'est malheuresement plus fonctionnel et votre compte n'a pas été activé</p>
-{% endif %}
+<div class="container">
+    <div class="row">
+      <div class="col s12 m10 offset-m1 signup-message">
+      {% if is_valid_data == True %}
+        <h4 class="center-align">C'est tout bon</h4>
+        <p class="center-align">Votre compte est à présent actif !</p>
+        <a  class="col s12 waves-effect waves-light btn amber darken-1 black-text" href="{% url 'dashboard' %}">Entrer dans Melomnia</a>
+      {% else %}
+        <h4 class="center-align">Oups...</h4>
+        <p class="center-align">Le lien n'est malheuresement plus fonctionnel et votre compte n'a pas pu été activé</p>
+      {% endif %}
+      </div>
+    </div>
+  </div>
 {% endblock %}

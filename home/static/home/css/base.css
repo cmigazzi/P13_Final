@@ -7,6 +7,10 @@ button:focus {
     background-color: #d1c4e9;
 }
 
+/* Signup message */
+.signup-message {
+ min-height: 50vh !important;
+}
 
 /* Navbar  */
 nav .brand-logo {
