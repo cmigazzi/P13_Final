@@ -2,6 +2,11 @@ body {
     font-family: 'Raleway', sans-serif;
 }
 
+button:focus {
+    outline: none;
+    background-color: #d1c4e9;
+}
+
 
 /* Navbar  */
 nav .brand-logo {
@@ -41,4 +46,25 @@ nav .brand-logo {
 
 .clickable-row:hover {
     background-color: #fff8e1;
+}
+
+/* Datepicker colors */
+.datepicker-date-display {
+    background-color: #311b92;
+}
+
+.datepicker-day-button:focus {
+    background-color: #d1c4e9;
+}
+
+.datepicker-table td.is-selected {
+    background-color: #311b92;
+}
+
+.datepicker-table td.is-today {
+    color: #ffb300;
+}
+
+.datepicker-cancel, .datepicker-done {
+    color: #311b92;
 }

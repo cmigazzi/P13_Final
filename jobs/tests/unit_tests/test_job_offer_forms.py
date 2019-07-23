@@ -26,6 +26,11 @@ def test_details_field_class():
     assert details_field.widget.attrs["class"] == "materialize-textarea"
 
 
+def test_limit_date_field_class():
+    limit_date_field = JobOfferForm().fields["limit_date"]
+    assert limit_date_field.widget.attrs["class"] == "datepicker"
+
+
 def test_half_hour_count_widget():
     assert isinstance(JobOfferForm.declared_fields["half_hour_count"],
                       forms.CharField)
@@ -50,3 +55,23 @@ def test_cleaned_half_hour_count():
     form = JobOfferForm(data=data)
     form.is_valid()
     assert form.cleaned_data["half_hour_count"] == 13
+
+
+def test_half_hour_count_invalid_input():
+    data = {"position": "Professeur de trompette",
+            "half_hour_count": "dix",
+            "contract_type": "CDI",
+            "details": ("Lorem ipsum dolor sit amet, consectetur adipiscing "
+                        "elit, sed do eiusmod tempor incididunt ut "
+                        "labore et dolore magna aliqua. Ut enim ad minim "
+                        "veniam, quis nostrud exercitation ullamco "
+                        "laboris nisi ut aliquip ex ea commodo consequat. "
+                        "Duis aute irure dolor in reprehenderit in "
+                        "voluptate velit esse cillum dolore eu fugiat nulla "
+                        "pariatur. Excepteur sint occaecat "
+                        "cupidatat non proident, sunt in culpa qui officia "
+                        "deserunt mollit anim id est laborum."),
+            "apply_email": "emploi@conservatoire.fr",
+            "limit_date": date(2019, 11, 2).strftime("%d/%m/%Y")}
+    form = JobOfferForm(data=data)
+    assert form.is_valid() is False
