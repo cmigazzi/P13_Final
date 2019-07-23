@@ -63,4 +63,5 @@ class JobApplyView(FormView):
             'candidature@melomnia.fr',
             [self.job_offer.school.user.email]
         )
+        mail.content_subtype = "html"
         mail.send()

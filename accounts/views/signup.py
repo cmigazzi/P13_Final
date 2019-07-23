@@ -35,6 +35,7 @@ class SignupView(View):
                 'no-reply@melomnia.fr',
                 [user.email]
                 )
+            mail.content_subtype = "html"
             mail.send()
             return render(request, "accounts/signup-email.html")
         else:
