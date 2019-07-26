@@ -40,8 +40,8 @@
 {% if user.is_teacher %}
 <div class="container">
   <div class="row">
-    <span class="col s2 offset-s3">Ce poste vous intéresse ?</span>
-    <a href="{% url 'job_apply' joboffer.id %}" class="waves-effect waves-light btn amber black-text">Postuler</a>
+    <span class="col s2 offset-s3 hide-on-small-only">Ce poste vous intéresse ?</span>
+    <a href="{% url 'job_apply' joboffer.id %}" class="waves-effect waves-light btn amber black-text col s12 m6">Postuler</a>
   </div>
 </div>
 {% endif %}

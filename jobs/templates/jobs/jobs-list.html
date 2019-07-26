@@ -12,8 +12,8 @@
 {% if user.is_school %}
 <div class="container">
  <div class="row valign-wrapper">
-   <span class="col s2 offset-s3">Vous recrutez ?</span>
-   <a href="{% url 'joboffer_create' %}" class="waves-effect waves-light btn amber black-text">Publier une offre</a>
+   <span class="col s2 offset-s3 hide-on-small-only">Vous recrutez ?</span>
+   <a href="{% url 'joboffer_create' %}" class="waves-effect waves-light btn amber black-text col s12 m6">Publier une offre</a>
  </div>
 </div>
 {% endif %}

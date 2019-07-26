@@ -125,5 +125,3 @@ dmypy.json
 
 # VSCode
 .vscode/
-
-tasks.py

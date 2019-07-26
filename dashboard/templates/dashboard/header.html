@@ -1,11 +1,11 @@
 {% load static %}
 <nav>
   <div class="nav-wrapper deep-purple darken-4">
-    <a href="{% url 'dashboard' %}" class="brand-logo"><img src="" alt="melomnia"></a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li><a href="{% url 'jobs' %}"><i class="material-icons left">work</i>Emplois</a></li>
-      <li><a href="{% url 'profile_settings' %}"><i class="material-icons left">settings</i>Paramètres</a></li>
-      <li><a href="{% url 'logout' %}"><i class="material-icons left">settings</i>Deconnexion</a></li>
+    <a href="{% url 'dashboard' %}" class="brand-logo left"><img src="" alt="m."></a>
+    <ul id="nav-mobile" class="right">
+      <li><a href="{% url 'jobs' %}" alt="emplois"><i class="material-icons left">work</i><span class="hide-on-small-only">Emplois</span></a></li>
+      <li><a href="{% url 'profile_settings' %}"><i class="material-icons left">settings</i><span class="hide-on-small-only">Paramètres</span></a></li>
+      <li><a href="{% url 'logout' %}"><i class="material-icons left">exit_to_app</i><span class="hide-on-small-only">Deconnexion</span></a></li>
     </ul>
   </div>
 </nav>
