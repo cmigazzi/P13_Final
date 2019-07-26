@@ -10,6 +10,7 @@ from django.contrib.sites.shortcuts import get_current_site
 
 from accounts.forms import UserCreationForm
 from accounts.tokens import account_activation_token
+from profiles.models import Teacher, School
 
 
 class SignupView(View):
@@ -24,6 +25,10 @@ class SignupView(View):
         form = self.form_class(request.POST)
         if form.is_valid():
             user = form.save()
+            if user.is_teacher:
+                Teacher.objects.create(user=user)
+            elif user.is_school:
+                School.objects.create(user=user)
             uid = urlsafe_base64_encode(force_bytes(user.pk))
             token = account_activation_token.make_token(user.pk)
             email_context = {"token": token,

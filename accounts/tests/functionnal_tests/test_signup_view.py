@@ -6,6 +6,7 @@ from django.contrib.auth import get_user_model
 
 from accounts.forms import UserCreationForm
 from accounts.views import SignupView
+from profiles.models import Teacher, School
 
 
 User = get_user_model()
@@ -90,3 +91,15 @@ class TestSignupView:
                 f"{response.context['uid']}/{response.context['token']}")
         mail = mailoutbox[0]
         assert link in mail.body
+
+    def test_techer_profile_creation(self, client):
+        client.post(self.url, self.form_data)
+        user = User.objects.get(email=self.form_data["email"])
+        assert Teacher.objects.get(user=user)
+
+    def test_school_profile_creation(self, client):
+        data = dict(self.form_data)
+        data["user_type"] = "SCHOOL"
+        client.post(self.url, data)
+        user = User.objects.get(email=data["email"])
+        assert School.objects.get(user=user)
