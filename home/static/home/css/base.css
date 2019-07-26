@@ -17,6 +17,10 @@ nav .brand-logo {
     margin-left: 1rem;
 }
 
+#icon {
+    height: 64px;
+}
+
 
 /* Forms colors */
 .input-field input[type=text]:focus + label {
