@@ -101,6 +101,25 @@ class TestChangeSettingsView:
         profile = School.objects.get(user=user_school_login)
         assert profile.name == school_change_settings_data["name"]
 
+    def test_post_status_code(self, client,
+                              user_teacher_login,
+                              teacher_change_settings_data,
+                              change_address_data):
+        teacher_change_settings_data.update(change_address_data)
+        response = client.post(self.url, data=teacher_change_settings_data,
+                               follow=True)
+        assert response.status_code == 200
+
+    def test_form_submission_user_without_address(
+                                            self, client,
+                                            user_teacher_login_without_address,
+                                            teacher_change_settings_data,
+                                            change_address_data):
+        teacher_change_settings_data.update(change_address_data)
+        response = client.post(self.url, data=teacher_change_settings_data,
+                               follow=True)
+        assert response.status_code == 200
+
     def test_teacher_form_rendering(self, client, user_teacher_login):
         response = client.get(self.url)
         assert "Prénom" in response.content.decode("utf-8")

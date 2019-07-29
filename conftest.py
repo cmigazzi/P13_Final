@@ -61,6 +61,21 @@ def user_teacher(django_user_model, user_address, teacher_profile):
 
 
 @pytest.fixture()
+def user_teacher_login_without_address(client,
+                                       django_user_model,
+                                       teacher_profile):
+    login_data = {"email": "teacher_no_pass@django.com",
+                  "password": "azertyui",
+                  "is_teacher": True}
+    user = django_user_model.objects.create_user(**login_data)
+    user.is_active = True
+    user.save()
+    Teacher.objects.create(user=user, **teacher_profile)
+    client.login(email=login_data["email"], password=login_data["password"])
+    return user
+
+
+@pytest.fixture()
 def user_teacher_login(client, user_teacher):
     client.login(email=user_teacher.email, password="azertyui")
     return user_teacher

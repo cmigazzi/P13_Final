@@ -11,7 +11,7 @@
 </div>
 <div class="row"></div>
 <div class="container">
-  <form action="{% url 'change_settings' %]" method="POST">
+  <form action="{% url 'change_settings' %}" method="POST">
     {% csrf_token %}
     {% with settings_form as form%}
       {% include "home/form-fields.html" %}

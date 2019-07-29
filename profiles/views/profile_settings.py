@@ -38,8 +38,13 @@ class ChangeUserSettings(View):
             settings_form = self.teacher_settings_form_class(
                                 request.POST,
                                 instance=user.teacher)
-        address_form = self.address_form_class(request.POST,
-                                               instance=user.address)
+        try:
+            address_form = self.address_form_class(request.POST,
+                                                   instance=user.address)
+        except Address.DoesNotExist:
+            Address.objects.create(user=user)
+            address_form = self.address_form_class(request.POST,
+                                                   instance=user.address)
 
         if settings_form.is_valid() and address_form.is_valid():
             settings_form.save()
