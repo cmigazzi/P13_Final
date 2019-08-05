@@ -89,3 +89,10 @@ def user_school_login(client, user_school):
 def teacher_login(client):
     teacher = client.login(email="jeanmi@melomelo.com", password="azertyui")
     return teacher
+
+
+@pytest.fixture()
+def school_login(client):
+    school = client.login(email="direction@conservatoire.com",
+                          password="azertyui")
+    assert school
