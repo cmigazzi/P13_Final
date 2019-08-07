@@ -1,6 +1,6 @@
 <div class="row">
   <h4 class="center-align">Connexion</h4>
-  <form class="col s10 offset-s1 m8 offset-m2 l6 offset-l3" action="{% url 'login' %}" method="POST">
+  <form class="col s10 offset-s1 m8 offset-m2 l6 offset-l3" action="{% url 'accounts:login' %}" method="POST">
       {% csrf_token %}
       {% include "home/form-fields.html" %}
       <button class="waves-effect waves-light btn deep-purple darken-4 col m4 offset-m4 s8 offset-s2" type="submit">Se connecter</button>

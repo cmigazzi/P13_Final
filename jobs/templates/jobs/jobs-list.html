@@ -13,7 +13,7 @@
 <div class="container">
  <div class="row valign-wrapper">
    <span class="col s2 offset-s3 hide-on-small-only">Vous recrutez ?</span>
-   <a href="{% url 'joboffer_create' %}" class="waves-effect waves-light btn amber black-text col s12 m6">Publier une offre</a>
+   <a href="{% url 'jobs:create' %}" class="waves-effect waves-light btn amber black-text col s12 m6">Publier une offre</a>
  </div>
 </div>
 {% endif %}
@@ -26,7 +26,7 @@
     </thead>
     <tbody>
       {% for job in jobs %}
-        <tr class="clickable-row" data-url="{% url 'job_detail' job.id %}" >
+        <tr class="clickable-row" data-url="{% url 'jobs:detail' job.id %}" >
           <td>{{ job.position }}</td>
           <td>{{ job.half_hour_count|hours }}</td>
           <td>{{ job.school }}</td>

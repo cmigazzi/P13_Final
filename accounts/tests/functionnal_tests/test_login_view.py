@@ -9,7 +9,7 @@ from accounts.forms import LoginForm
 @pytest.mark.django_db
 class TestLoginView:
 
-    url = reverse("login")
+    url = reverse("accounts:login")
 
     def test_post_method(self, client, django_user_model):
         email, password = "test@django.com", "azertyui"

@@ -32,7 +32,7 @@ class JobOfferCreate(CreateView):
         self.object = None
         if request.user.is_school:
             return super().render_to_response(super().get_context_data())
-        return redirect(reverse("dashboard"))
+        return redirect(reverse("dashboard:index"))
 
     def form_valid(self, form):
         """Add user before save in database."""

@@ -10,7 +10,7 @@ from jobs.models import JobOffer
 class TestJobDetailView:
 
     job_id = 4
-    url = reverse("job_detail", kwargs={"pk": job_id})
+    url = reverse("jobs:detail", kwargs={"pk": job_id})
 
     def test_response_status_code(self, client,
                                   user_teacher_login, db_populated):

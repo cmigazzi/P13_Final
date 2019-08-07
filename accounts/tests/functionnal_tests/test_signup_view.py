@@ -15,7 +15,7 @@ User = get_user_model()
 @pytest.mark.django_db
 class TestSignupView:
 
-    url = reverse("signup")
+    url = reverse("accounts:signup")
     form_data = {"email": "test@django.com",
                  "user_type": "TEACHER",
                  "password1": "azertyui",

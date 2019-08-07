@@ -28,7 +28,7 @@ class JobApplyView(FormView):
         self.job_offer = JobOffer.objects.get(id=kwargs["offer"])
         if request.user.is_teacher:
             return self.render_to_response(self.get_context_data())
-        return redirect(reverse("dashboard"))
+        return redirect(reverse("dashboard:index"))
 
     def post(self, request, *args, **kwargs):
         """Handle POST requests and redirect if user is school."""
@@ -41,7 +41,7 @@ class JobApplyView(FormView):
                 return self.form_valid(form)
             else:
                 return self.form_invalid(form)
-        return redirect("dashboard")
+        return redirect("dashboard:index")
 
     def form_valid(self, form):
         """Send mails if form is valid."""

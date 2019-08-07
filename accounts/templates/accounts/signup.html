@@ -6,7 +6,7 @@
 <div class="container">
   <div class="row">
     <h4 class="center-align">Créer un compte</h4>
-    <form action="{% url 'signup' %}" method="post">
+    <form action="{% url 'accounts:signup' %}" method="post">
       {% csrf_token %}
       {% include "home/form-fields.html" %}
       <button class="waves-effect waves-light btn deep-purple darken-4 col m4 offset-m4 s8 offset-s2" type="submit">Valider</button>

@@ -41,7 +41,7 @@ def change_address_data():
 class TestChangeSettingsView:
 
     view = ChangeUserSettings()
-    url = reverse("change_settings")
+    url = reverse("profiles:update")
 
     def test_is_a_view_class(self):
         assert issubclass(ChangeUserSettings, View)
@@ -59,7 +59,7 @@ class TestChangeSettingsView:
 
     def test_url(self, client, user_teacher):
         response = client.get(self.url)
-        assert response.resolver_match.url_name == "change_settings"
+        assert response.resolver_match.url_name == "update"
 
     def test_get_method_render_template(self, client, user_teacher_login):
         response = client.get(self.url)

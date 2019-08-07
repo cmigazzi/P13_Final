@@ -10,7 +10,7 @@ from jobs.forms import JobApplyForm
 from jobs.models import JobOffer
 
 
-URL = reverse("job_apply", kwargs={"offer": 4})
+URL = reverse("jobs:apply", kwargs={"offer": 4})
 
 
 def test_is_form_view():
@@ -66,7 +66,7 @@ def post_data(media_root):
 
 def test_post_method(client, db_populated, user_teacher_login, post_data):
     response = client.post(URL, post_data, follow=True)
-    assert response.resolver_match.url_name == "dashboard"
+    assert response.resolver_match.url_name == "index"
 
 
 def test_post_unauthenticated(client, db_populated, post_data):
@@ -76,7 +76,7 @@ def test_post_unauthenticated(client, db_populated, post_data):
 
 def test_post_school_user(client, db_populated, user_school_login, post_data):
     response = client.post(URL, post_data, follow=True)
-    assert response.resolver_match.url_name == "dashboard"
+    assert response.resolver_match.url_name == "index"
 
 
 def test_files_upload(client, db_populated, user_teacher_login,

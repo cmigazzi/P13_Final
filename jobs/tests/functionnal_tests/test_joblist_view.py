@@ -11,7 +11,7 @@ from jobs.models import JobOffer
 @pytest.mark.django_db
 class TestJobListView:
 
-    url = reverse("jobs")
+    url = reverse("jobs:index")
 
     def test_is_list_view(self):
         assert issubclass(JobList, ListView)

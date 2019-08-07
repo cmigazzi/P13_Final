@@ -46,7 +46,7 @@ class ChangeUserSettings(View):
             address = address_form.save(commit=False)
             address.user = request.user
             address.save()
-            return redirect(reverse("profile_settings"))
+            return redirect(reverse("profiles:settings"))
 
         if request.user.is_school:
             context = {"address_form": self.address_form_class,

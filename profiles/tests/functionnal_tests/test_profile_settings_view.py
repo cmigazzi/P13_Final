@@ -5,7 +5,7 @@ from django.urls import reverse
 
 class TestUserSettingsView:
 
-    url = reverse("profile_settings")
+    url = reverse("profiles:settings")
 
     def test_status_code(self, client, user_teacher_login):
         response = client.get(self.url)

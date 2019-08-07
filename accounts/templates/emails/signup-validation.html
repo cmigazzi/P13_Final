@@ -6,7 +6,7 @@
 <body>
     <p>Vous venez de vous inscrire sur www.melomnia.fr et nous vous en remercions !</p>
     <p>Voici le lien pour activer votre compte:</p>
-    <p>https://{{ domain }}{% url 'activate_account' uid=uid token=token %}</p>            
+    <p>https://{{ domain }}{% url 'accounts:activate_account' uid=uid token=token %}</p>            
 </body>
 
 <footer>

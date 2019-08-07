@@ -5,13 +5,13 @@ from django.urls import reverse
 
 
 def test_dashboard_unauthtenticated(client):
-    response = client.get(reverse("dashboard"), follow=True)
+    response = client.get(reverse("dashboard:index"), follow=True)
     templates = [t.name for t in response.templates]
     assert "accounts/login-form.html" in templates
 
 
 def test_dashboard_authenticated(client, user_test):
-    response = client.get(reverse("dashboard"))
+    response = client.get(reverse("dashboard:index"))
     templates = [t.name for t in response.templates]
     assert "dashboard/dashboard.html" in templates
 
@@ -19,7 +19,7 @@ def test_dashboard_authenticated(client, user_test):
 @pytest.mark.django_db
 class TestSchoolDashboardView:
 
-    URL = reverse("dashboard")
+    URL = reverse("dashboard:index")
 
     def test_school_templates(self, client, user_school_login):
         response = client.get(self.URL)

@@ -8,7 +8,7 @@ from jobs.views import JobOfferCreate
 from jobs.models import JobOffer
 from jobs.forms import JobOfferForm
 
-url = reverse("joboffer_create")
+url = reverse("jobs:create")
 
 
 def test_is_create_view():
